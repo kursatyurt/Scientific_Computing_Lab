@@ -61,10 +61,23 @@ end
 % --- prediction policy 1 ---
 
 %%% Fill in this function! [WS exercise a)]
-function next = predict1()
+function next = predict1(j, transm)
+% j - prev move human player
+% transm - current trans matrix of human player
 % predict player next move
+display(transm);
 
-next = []; % This is a dummy function
+global param_a param_b
+rnd = rand();
+hnext = -1;
+if(rnd<= param_a)
+    hnext = mod(j,3) + 1;
+elseif(rnd <= param_b)
+    hnext = mod(j+1,3) + 1;
+else
+    hnext = j;
+
+next = winchoice(hnext); % This is a dummy function
 % HINT: The function should look similar to predict2 and predict3 below
 
 
