@@ -33,16 +33,20 @@
 %
 
 % --- Main function ---
-function next = mchoice(ng, i, j)
+function next = mchoice(ng, i, j,i_comp,j_comp)
 % machine next move
-global samplem transm policy
+global samplem transm policy samplem2 transm2 % keeps track of human moves for computer strategy
 if(ng == 1)
     % initialize matrices
     [samplem,transm]   = initmchoice;
+    [samplem2,transm2]   = initmchoice;
     next = randi(3);
 else
     samplem  = updatesamplem(i,j,samplem);
     transm   = updatetransm(samplem);
+    
+    samplem2  = updatesamplem(i_comp,j_comp,samplem2);
+    transm2   = updatetransm(samplem2); 
     
     switch policy
         case 1
@@ -53,9 +57,9 @@ else
             next = predict3(j,transm);
         otherwise
             error('Bad policy given!')
-    end
-    
+    end  
 end
+display(transm2);
 
 
 % --- prediction policy 1 ---
@@ -115,9 +119,9 @@ samplem(i,j) = sample(i,j)+1;
 
 function next = predict2(j,transm)
 % predict player next move
-
+% take the move that ist most likely based on the previous move
 transm % display transition matrix
-[hprob,hnext] = max(transm(j,:));
+[hprob,hnext] = max(transm(j,:)); % [value, index]
 next = winchoice(hnext);
 
 function next = predict3(j,transm)
