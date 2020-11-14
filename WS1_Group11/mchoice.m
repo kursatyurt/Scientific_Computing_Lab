@@ -76,6 +76,7 @@ elseif(rnd <= param_b)
     hnext = mod(j+1,3) + 1;
 else
     hnext = j;
+end
 
 next = winchoice(hnext); % This is a dummy function
 % HINT: The function should look similar to predict2 and predict3 below
