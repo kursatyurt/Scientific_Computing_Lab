@@ -2,6 +2,12 @@ clc
 clear all
 close all
 
-PlotResults("Runge-Kutta",@RK_4)
-PlotResults("Explicit-Euler",@ExplicitEuler)
-PlotResults("Heun",@Heun)
+ %Exact Solution
+t_end = 5;
+dte=linspace(0,t_end,100);
+exsol=ExactSol(dte);
+
+PlotResults("Runge-Kutta",@RK_4,exsol,dte,t_end);
+PlotResults("Explicit-Euler",@ExplicitEuler,exsol,dte,t_end);
+PlotResults("Heun",@Heun,exsol,dte,t_end);
+
