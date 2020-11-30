@@ -19,4 +19,15 @@ E3 = ComputeError(rks4,ExactSol(dt4),1./4,t_end);
 disp("Error reduced by: "+  (E3/E2));
 E4 = ComputeError(rks8,ExactSol(dt8),1./8,t_end);
 disp("Error reduced by: "+  (E4/E3));
+
+disp("Numerical approximation error:");
+disp("E1");
+ComputeError(rks1,rks8(1:8:end),1,t_end); % need to adjust access for precise solution: access only every 4th index etc...
+disp("E2");
+num1 = ComputeError(rks2,rks8(1:4:end),1/2.,t_end);
+disp("E4");
+num1 = ComputeError(rks4,rks8(1:2:end),1/4.,t_end);
+disp("E8");
+num1 = ComputeError(rks8,rks8,1/8,t_end);
+
 end
