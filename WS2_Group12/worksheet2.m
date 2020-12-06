@@ -9,5 +9,5 @@ exsol=ExactSol(dte);
 
 PlotResults("Explicit-Euler",@ExplicitEuler,exsol,dte,t_end);
 PlotResults("Heun",@Heun,exsol,dte,t_end);
-PlotResults("Runge-Kutta",@RK_4,exsol,dte,t_end);
+PlotResults("Runge-Kutta 4",@RK_4,exsol,dte,t_end);
 
