@@ -10,4 +10,3 @@ exsol=ExactSol(dte);
 Euler = PlotResults("Explicit-Euler",@ExplicitEuler,exsol,dte,t_end)
 Heun = PlotResults("Heun",@Heun,exsol,dte,t_end)
 RK = PlotResults("Runge-Kutta",@RK_4,exsol,dte,t_end)
-
