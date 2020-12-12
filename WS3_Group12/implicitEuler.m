@@ -1,5 +1,5 @@
 function y = implicitEuler(rhs,rhs_prime,y_0,dt,t_end)
-    accuracy = 1e-4;
+    global accuracy;
     nbr_steps = ceil(t_end/dt)+1;
     y = zeros(nbr_steps,1);
     y(1) = y_0;
