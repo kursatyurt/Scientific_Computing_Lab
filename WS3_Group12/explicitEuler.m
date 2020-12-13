@@ -1,5 +1,5 @@
-function y = explicitEuler(y0,dt,final_time)
-global rhs_pdot;
+function y = explicitEuler(y0,dt,final_time, rhs)
+
 %Create Empty Vectors
 y= [];
 %Initialize the vectors
@@ -10,7 +10,7 @@ cnt = 1;
 for time = dt:dt:final_time
       cnt = cnt + 1;
 	  %Calculate next value of function
-	  y(cnt) = y(cnt-1) + dt*rhs_pdot(y(cnt-1));
+	  y(cnt) = y(cnt-1) + dt*rhs(y(cnt-1));
 	  %Increment time
     end
 end
