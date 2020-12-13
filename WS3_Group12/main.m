@@ -24,11 +24,11 @@ rhs_prime = matlabFunction(rhs_prime);
 t_ana = linspace(0,t_end);
 p_ana = 200./(20-10.*exp(-7.*t_ana));
 fig = plot(t_ana,p_ana);
-saveas(fig,'graph_p(t)_analytical.png')
+saveas(fig,'a_analytical.png')
 
 % task b)
 plot_b(y_0, dt_list,t_end,@explicitEuler,'Explicit Euler',t_ana,p_ana,rhs);
-plot_b(y_0, dt_list,t_end,@Heun,'Heun',t_ana,p_ana,rhs);
+plot_b(y_0, dt_list,t_end,@Heun,'Explicit Heun',t_ana,p_ana,rhs);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % task c) and d)
@@ -39,10 +39,10 @@ t_list = cell(1,sz);
 for i=1:sz
     t_list{i} = 0:dt_list(i):t_end;
 end
-euler = getDtCell(sol,dt_list,@impliciteuler);
-adam = getDtCell(sol,dt_list,@adamsmoulton2);
-plotdtsolutions(t_list,dt_list,euler,'implicit euler');
-plotdtsolutions(t_list,dt_list,adam,'adams moulton 2nd order');
+euler = getDtCell(sol,dt_list,@implicitEuler);
+adam = getDtCell(sol,dt_list,@adamsMoulton2);
+plotDtSolutions(t_list,dt_list,euler,'implicit euler');
+plotDtSolutions(t_list,dt_list,adam,'adams moulton 2nd order');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % task e) and f)
