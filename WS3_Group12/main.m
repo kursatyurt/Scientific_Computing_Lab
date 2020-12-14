@@ -1,3 +1,8 @@
+clc
+clear all
+close all
+
+
 % params
 global accuracy
 accuracy = 1e-4; % newton accuracy
@@ -24,5 +29,9 @@ for i=1:sz
 end
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
+adam_lin1 = getDtCell(sol,dt_list,@adamsMoulton_lin1);
+adam_lin2 = getDtCell(sol,dt_list,@adamsMoulton_lin2);
 plotDtSolutions(t_list,dt_list,euler,'Implicit Euler');
 plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order');
+plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1');
+plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2');
