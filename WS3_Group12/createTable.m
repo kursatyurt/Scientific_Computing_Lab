@@ -17,12 +17,12 @@ for i=1:length(dt_list)
 end 
 
 for i=2:length(dt_list)
-   err_red_adam(i)      = adam_errors(i-1)     - adam_errors(i);
-   err_red_adam_lin1(i) = adam_lin1_errors(i-1) - adam_lin1_errors(i);
-   err_red_adam_lin2(i) = adam_lin2_errors(i-1) - adam_lin2_errors(i);
-   err_red_imp_euler(i) = imp_euler_errors(i-1) - imp_euler_errors(i);
-   err_red_exp_euler(i) = exp_euler_errors(i-1) - exp_euler_errors(i);
-   err_red_heun(i)      = heun_errors(i-1)      - heun_errors(i);
+   err_red_adam(i)      = adam_errors(i-1)     / adam_errors(i);
+   err_red_adam_lin1(i) = adam_lin1_errors(i-1) / adam_lin1_errors(i);
+   err_red_adam_lin2(i) = adam_lin2_errors(i-1) / adam_lin2_errors(i);
+   err_red_imp_euler(i) = imp_euler_errors(i-1) / imp_euler_errors(i);
+   err_red_exp_euler(i) = exp_euler_errors(i-1) / exp_euler_errors(i);
+   err_red_heun(i)      = heun_errors(i-1)      / heun_errors(i);
 end
 
 
