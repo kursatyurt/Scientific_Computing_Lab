@@ -22,8 +22,9 @@ rhs_prime = matlabFunction(rhs_prime);
 % task a)
 t_ana = linspace(0,t_end);
 p_ana = 200./(20-10.*exp(-7.*t_ana));
-fig = plot(t_ana,p_ana);
-saveas(fig,'a_analytical.png')
+fig = plot(t_ana,p_ana,'LineWidth',2);xlabel('Time (s)');ylabel('Function Value');title('Analytical Solution');ylim([0 20]);xlim([0 5]);
+
+
 
 % task b)
 sol = Solutions(y_0,t_end,rhs,rhs_prime);
@@ -42,8 +43,8 @@ plotDtSols_vs_ExactSol(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana)
 % task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
-plotDtSolutions(t_list,dt_list,euler,'implicit euler');
-plotDtSolutions(t_list,dt_list,adam,'adams moulton 2nd order');
+plotDtSolutions(t_list,dt_list,euler,'Implicit Euler');
+plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order');
 
 % task e) and f)
 adam_lin1 = getDtCell(sol,dt_list,@adamsMoulton_lin1);
