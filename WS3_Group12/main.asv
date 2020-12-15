@@ -26,6 +26,13 @@ fig = plot(t_ana,p_ana);
 saveas(fig,'a_analytical.png')
 
 % task b)
+explicit_euler = getDtCell(sol,dt_list,@explicitEuler);
+plotDtSols_vs_Exact(t_list,dt_list,euler_euler,'explicit euler');
+
+%plot_(y_0, dt_list,t_end,@explicitEuler,'Explicit Euler',t_ana,p_ana,rhs);
+%plot_b(y_0, dt_list,t_end,@Heun,'Explicit Heun',t_ana,p_ana,rhs);
+%{
+% task c) and d)
 sol = Solutions(y_0,t_end,rhs,rhs_prime);
 dt_list = [1/2,1/4,1/8,1/16,1/32]';
 sz = length(dt_list);
@@ -33,13 +40,6 @@ t_list = cell(1,sz);
 for i=1:sz
     t_list{i} = 0:dt_list(i):t_end;
 end
-explicit_euler = getDtCell(sol,dt_list,@explicitEuler);
-heun = getDtCell(sol,dt_list,@Heun);
-plotDtSols_vs_ExactSol(t_list,dt_list,explicit_euler,'Explicit Euler vs Exact solution',t_ana,p_ana);
-plotDtSols_vs_ExactSol(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana);
-
-
-% task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
 plotDtSolutions(t_list,dt_list,euler,'implicit euler');
@@ -54,4 +54,5 @@ plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1');
 plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2');
 
 % task g)
-
+%E1 = ComputeError(rks1,ExactSol(dt1),1,t_end);
+%}
