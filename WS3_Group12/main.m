@@ -22,7 +22,7 @@ rhs_prime = matlabFunction(rhs_prime);
 % task a)
 t_ana = linspace(0,t_end);
 p_ana = 200./(20-10.*exp(-7.*t_ana));
-fig = plot(t_ana,p_ana,'LineWidth',2);xlabel('Time (s)');ylabel('Function Value');title('Analytical Solution');ylim([0 20]);xlim([0 5]);
+fig = plot(t_ana,p_ana,'LineWidth',2);xlabel('Time (t)');ylabel('Function Value');title('Analytical Solution');ylim([0 20]);xlim([0 5]);grid on;
 
 
 
