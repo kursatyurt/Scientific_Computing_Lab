@@ -3,10 +3,10 @@ clear all
 close all
 
  % Define rhs function
-syms p pdot(y)
-eqn = pdot(p) == (1-y/10)*y;
 global rhs_pdot;
-rhs_pdot=matlabFunction(rhs(eqn));
+syms p pdot
+rhs = (1-p/10)*p;
+rhs_pdot=matlabFunction(rhs);
 
  % Exact Solution
 t_end = 5;
