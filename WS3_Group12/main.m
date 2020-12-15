@@ -43,16 +43,16 @@ plotDtSols_vs_ExactSol(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana)
 % task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
-plotDtSolutions(t_list,dt_list,euler,'Implicit Euler');
-plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order');
+plotDtSolutions(t_list,dt_list,euler,'Implicit Euler',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order',t_ana,p_ana);
 
 % task e) and f)
 adam_lin1 = getDtCell(sol,dt_list,@adamsMoulton_lin1);
 adam_lin2 = getDtCell(sol,dt_list,@adamsMoulton_lin2);
-plotDtSolutions(t_list,dt_list,euler,'Implicit Euler');
-plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order');
-plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1');
-plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2');
+plotDtSolutions(t_list,dt_list,euler,'Implicit Euler',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2',t_ana,p_ana);
 
 % task g)
 
