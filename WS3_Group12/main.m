@@ -54,6 +54,7 @@ plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2',t_ana,p_ana);
 
-% task g)
+% task g) h)
+
 
 createTable
