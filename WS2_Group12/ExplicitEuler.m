@@ -1,21 +1,16 @@
-function [x,y] = ExplicitEuler(y0,x0,dt,finaltime)
+function y = ExplicitEuler(y0,dt,final_time)
+global rhs_pdot;
 %Create Empty Vectors
-x=[];
-y=[];
+y= [];
 %Initialize the vectors
-x(1)= x0;
-y(1)= y0;
+y(1) = y0;
 %Initialize Counter
-time=x0;
-cnt=1;
+cnt = 1;
 %Start Solution Loop
-	while time<finaltime
-	  %Increment Counter
+for time = 0.:dt:(final_time-dt)
       cnt = cnt + 1;
 	  %Calculate next value of function
-	  y(cnt) = y(cnt-1) + dt*pdot(y(cnt-1));
+	  y(cnt) = y(cnt-1) + dt*rhs_pdot(y(cnt-1));
 	  %Increment time
-	  time = time + dt;
-	  x(cnt) = time;
     end
 end

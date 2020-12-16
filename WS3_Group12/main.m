@@ -36,6 +36,7 @@ heun = getDtCell(sol,dt_list,@Heun);
 plotDtSolutions(t_list,dt_list,explicit_euler,'Explicit Euler vs Exact solution',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana);
 
+
 % 
 % % task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
