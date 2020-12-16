@@ -24,7 +24,7 @@ t_ana = linspace(0,t_end);
 p_ana = 200./(20-10.*exp(-7.*t_ana));
 fig = plot(t_ana,p_ana,'LineWidth',2);xlabel('Time (t)');ylabel('Function Value');title('Analytical Solution');ylim([0 20]);xlim([0 5]);grid on;
 
-
+dbstop if error
 
 % task b)
 sol = Solutions(y_0,t_end,rhs,rhs_prime);
@@ -39,8 +39,8 @@ heun = getDtCell(sol,dt_list,@Heun);
 plotDtSols_vs_ExactSol(t_list,dt_list,explicit_euler,'Explicit Euler vs Exact solution',t_ana,p_ana);
 plotDtSols_vs_ExactSol(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana);
 
-
-% task c) and d)
+% 
+% % task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
 plotDtSolutions(t_list,dt_list,euler,'Implicit Euler',t_ana,p_ana);

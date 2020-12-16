@@ -16,7 +16,14 @@ classdef Solutions
             sz = length(dt_list);
             sol_list = cell(1,sz);
             for i=1:sz
-                sol_list{i} = method(obj.rhs,obj.rhs_prime,obj.y_0,dt_list(i),obj.t_end);
+                try
+                    sol_list{i} = method(obj.rhs,obj.rhs_prime,obj.y_0,dt_list(i),obj.t_end);
+                catch e
+                    fprintf(2,e.message);
+                    nbr_steps = ceil(obj.t_end/dt_list(i))+1;
+                    sol_list{i} = zeros(nbr_steps,1);
+                    continue;
+                end
             end
         end
     end

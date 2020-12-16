@@ -10,7 +10,6 @@ function y_new = newtonRoot(y_guess,accuracy,rhs,rhs_prime)
 %         disp(n);
 %         disp(abs(error));
         if(n>max_n)
-            fprintf('Exceeded number of max iterations %i \n',max_n);
-            return;
+            error('Exceeded number of max iterations %i \n',max_n);
         end
     end
