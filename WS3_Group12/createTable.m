@@ -11,7 +11,25 @@ function createTable(method_cell,method_name,dt_list)
     for i=2:length(dt_list)
        err_red(i)      = errors(i-1)     / errors(i);
     end
+    
+    errors = num2cell(errors);
+err_red = num2cell(err_red);
+
+%Sanitize for Table Creation
+for i=1:length(dt_list)
+     if (errors{1,i} == Inf | errors{1,i} == NaN )
+         errors{1,i} = '-';
+     end
+     if (err_red{1,i} == Inf | err_red{1,i} == NaN )
+         err_red{1,i} = '-';
+     end
+end
+% First erro reduction will be always not available
+        err_red{1,1}= '-'
+        
+        
+%Display the name of method and create table and show
     disp(method_name)
-    table(dt_list,errors.',err_red.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
+    table_created = table(dt_list,errors.',err_red.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
 end
 
