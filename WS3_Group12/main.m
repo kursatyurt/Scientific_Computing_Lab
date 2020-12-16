@@ -8,7 +8,6 @@ accuracy = 1e-4; % newton accuracy
 y_0 = 20;
 t_end = 5;
 dt = 1/64;
-t = 0:dt:t_end;
 dt_list = [1/2,1/4,1/8,1/16,1/32]';
 
 % ODE def
@@ -36,9 +35,7 @@ heun = getDtCell(sol,dt_list,@Heun);
 plotDtSolutions(t_list,dt_list,explicit_euler,'Explicit Euler vs Exact solution',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana);
 
-
-% 
-% % task c) and d)
+% task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
 plotDtSolutions(t_list,dt_list,euler,'Implicit Euler',t_ana,p_ana);

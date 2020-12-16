@@ -11,7 +11,6 @@ function y = adamsMoulton2(rhs,rhs_prime,y_0,dt,t_end)
           try
             y(i) = newtonRoot(y(i-1),accuracy,r_root,r_root_prime);
           catch e
-             y(i) = 0;
              error("AdamsMoulton2 with dt=%f does not converge\n",dt);
           end
     end
