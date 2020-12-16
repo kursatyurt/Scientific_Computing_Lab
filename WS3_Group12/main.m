@@ -50,6 +50,10 @@ plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1',t_ana,p
 plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2',t_ana,p_ana);
 
 % task g) h)
-
-
-createTable
+%Analytical Solution Function Handler
+createTable(euler,"IMPLICIT EULER METHOD",dt_list);
+createTable(adam,"ADAMS MOULTON METHOD",dt_list);
+createTable(adam_lin1,"ADAMS MOULTON METHOD 1st Linearization",dt_list);
+createTable(adam_lin2,"ADAMS MOULTON METHOD 2nd Linearization",dt_list);
+createTable(explicit_euler,"Explicit Euler METHOD",dt_list);
+createTable(heun,"Heuns METHOD",dt_list);
