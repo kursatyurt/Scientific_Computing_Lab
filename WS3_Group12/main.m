@@ -68,7 +68,7 @@ plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Method Linearisation 2',
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % task g) h)
-<<<<<<< WS3_Group12/main.m
+
 % Calculate Errors Error Reduction Factors
 % Tabulate them in a readable format 
 createTable(euler,"IMPLICIT EULER METHOD",dt_list);
@@ -77,8 +77,4 @@ createTable(adam_lin1,"ADAMS MOULTON METHOD 1st Linearization",dt_list);
 createTable(adam_lin2,"ADAMS MOULTON METHOD 2nd Linearization",dt_list);
 createTable(explicit_euler,"Explicit Euler METHOD",dt_list);
 createTable(heun,"Heuns METHOD",dt_list);
-=======
 
-computeErrErrRed
-createTable
->>>>>>> WS3_Group12/main.m
