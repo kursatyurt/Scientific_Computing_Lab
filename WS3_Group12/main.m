@@ -32,25 +32,22 @@ for i=1:sz
 end
 explicit_euler = getDtCell(sol,dt_list,@explicitEuler);
 heun = getDtCell(sol,dt_list,@Heun);
-plotDtSolutions(t_list,dt_list,explicit_euler,'Explicit Euler vs Exact solution',t_ana,p_ana);
-plotDtSolutions(t_list,dt_list,heun,'Heun vs Exact solution',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,explicit_euler,'Explicit Euler Method',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,heun,'Heun Method',t_ana,p_ana);
 
 % task c) and d)
 euler = getDtCell(sol,dt_list,@implicitEuler);
 adam = getDtCell(sol,dt_list,@adamsMoulton2);
-plotDtSolutions(t_list,dt_list,euler,'Implicit Euler',t_ana,p_ana);
-plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order',t_ana,p_ana);
 
 % task e) and f)
 adam_lin1 = getDtCell(sol,dt_list,@adamsMoulton_lin1);
 adam_lin2 = getDtCell(sol,dt_list,@adamsMoulton_lin2);
-plotDtSolutions(t_list,dt_list,euler,'Implicit Euler',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,euler,'Implicit Euler Method',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order',t_ana,p_ana);
-plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Linearisation 1',t_ana,p_ana);
-plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Linearisation 2',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Method Linearisation 1',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton MEthod Linearisation 2',t_ana,p_ana);
 
 % task g) h)
-%Analytical Solution Function Handler
 createTable(euler,"IMPLICIT EULER METHOD",dt_list);
 createTable(adam,"ADAMS MOULTON METHOD",dt_list);
 createTable(adam_lin1,"ADAMS MOULTON METHOD 1st Linearization",dt_list);
