@@ -1,18 +1,41 @@
-disp('IMPLICIT EULER METHOD')
-T_imp_euler = table(dt_list,imp_euler_errors.',err_red_imp_euler.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
+function createTable(method_cell,method_name,dt_list)
+    %Analytical Solution Function Handler
+    analytical_sol = @(x) 200./(20-10.*exp(-7*x));
 
-disp('ADAMS MOULTON METHOD')
-T_adam = table(dt_list,adam_errors.',err_red_adam.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
+    % Calculate the error based on formula 
+    % E = SQRT( dt/t_end sum((numerical-exact)^2) )
+    err = @(method_cell,i) sqrt(dt_list(i)/5 * sum ((method_cell{1,i}-analytical_sol(0:dt_list(i):5).').^2));
+    
+    for i=1:length(dt_list)
+        errors(i) = err(method_cell,i);
+    end
+    
+    %Calculate Error Reductions 
+    for i=2:length(dt_list)
+       err_red(i) = errors(i-1) / errors(i);
+    end
+    
+    %Convert Arrays to Cells
+    errors = num2cell(errors);
+    err_red = num2cell(err_red);
 
-disp('ADAMS MOULTON METHOD 1st Linearization')
-T_adam_lin1 = table(dt_list,adam_lin1_errors.',err_red_adam_lin1.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
-
-disp('ADAMS MOULTON METHOD 2nd Linearization')
-T_adam_lin2 = table(dt_list,adam_lin2_errors.',err_red_adam_lin2.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
-
-disp('Explicit Euler METHOD')
-T_exp_euler = table(dt_list,exp_euler_errors.',err_red_exp_euler.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
-
-disp('Heuns METHOD')
-T_heun = table(dt_list,heun_errors.',err_red_heun.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
+    %Sanitize for Table Creation
+    for i=1:length(dt_list)
+         if (errors{1,i} == Inf | isnan(errors{1,i})| isequal(method_cell{1,i},zeros(size(method_cell{1,i}))) )
+             errors{1,i} = 'Diverges';
+         end
+         if (err_red{1,i} == Inf | isnan(err_red{1,i}) )
+             err_red{1,i} = '-';
+         end
+    end
+    
+    % First error reduction will be always not available
+    err_red{1,1}= '-';
+   
+        
+        
+    %Display the name of method and create table and show
+    disp(method_name)
+    table_created = table(dt_list,errors.',err_red.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
+end
 

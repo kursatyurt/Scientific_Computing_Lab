@@ -17,7 +17,11 @@ classdef Solutions
             sol_list = cell(1,sz);
             for i=1:sz
                 try
-                    sol_list{i} = method(obj.rhs,obj.rhs_prime,obj.y_0,dt_list(i),obj.t_end);
+                    if(isequal(method,@adamsMoulton_lin1) || isequal(method,@adamsMoulton_lin2))
+                        sol_list{i} = method(obj.y_0,dt_list(i),obj.t_end);
+                    else
+                        sol_list{i} = method(obj.rhs,obj.rhs_prime,obj.y_0,dt_list(i),obj.t_end);
+                    end
                 catch e
                     fprintf(2,e.message);
                     nbr_steps = ceil(obj.t_end/dt_list(i))+1;
