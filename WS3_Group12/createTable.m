@@ -25,7 +25,7 @@ for i=1:length(dt_list)
      end
 end
 % First erro reduction will be always not available
-        err_red{1,1}= '-'
+        err_red{1,1}= '-';
         
         
 %Display the name of method and create table and show
