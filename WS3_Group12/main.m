@@ -64,7 +64,7 @@ adam_lin2 = getDtCell(sol,dt_list,@adamsMoulton_lin2);
 plotDtSolutions(t_list,dt_list,euler,'Implicit Euler Method',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,adam,'Adams Moulton 2nd order',t_ana,p_ana);
 plotDtSolutions(t_list,dt_list,adam_lin1,'Adams Moulton Method Linearisation 1',t_ana,p_ana);
-plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton MEthod Linearisation 2',t_ana,p_ana);
+plotDtSolutions(t_list,dt_list,adam_lin2,'Adams Moulton Method Linearisation 2',t_ana,p_ana);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % task g) h)
