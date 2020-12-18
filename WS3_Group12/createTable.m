@@ -24,7 +24,7 @@ function createTable(method_cell,method_name,dt_list)
          if (errors{1,i} == Inf | isnan(errors{1,i})| isequal(method_cell{1,i},zeros(size(method_cell{1,i}))) )
              errors{1,i} = 'Diverges';
          end
-         if (err_red{1,i} == Inf | isnan(err_red{1,i}) )
+         if (err_red{1,i} == Inf | isnan(err_red{1,i})  | errors{1,max(i-1,1)} == 'Diverges' )
              err_red{1,i} = '-';
          end
     end
