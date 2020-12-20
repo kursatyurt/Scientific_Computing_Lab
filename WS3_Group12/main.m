@@ -78,3 +78,11 @@ createTable(adam_lin2,"ADAMS MOULTON METHOD 2nd Linearization",dt_list);
 createTable(explicit_euler,"Explicit Euler METHOD",dt_list);
 createTable(heun,"Heuns METHOD",dt_list);
 
+%Check Stability
+
+isStable(euler,"IMPLICIT EULER METHOD",dt_list);
+isStable(adam,"ADAMS MOULTON METHOD",dt_list);
+isStable(adam_lin1,"ADAMS MOULTON METHOD 1st Linearization",dt_list);
+isStable(adam_lin2,"ADAMS MOULTON METHOD 2nd Linearization",dt_list);
+isStable(explicit_euler,"Explicit Euler METHOD",dt_list);
+isStable(heun,"Heuns METHOD",dt_list);
