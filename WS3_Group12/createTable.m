@@ -36,6 +36,6 @@ function createTable(method_cell,method_name,dt_list)
         
     %Display the name of method and create table and show
     disp(method_name)
-    table_created = table(dt_list,errors.',err_red.','VariableNames',{'dt','Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
+    table_created = table(errors.',err_red.','VariableNames',{'Error','Error Red.'},'RowNames',{'1/2','1/4','1/8','1/16','1/32'})
 end
 
