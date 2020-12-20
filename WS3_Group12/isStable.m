@@ -5,7 +5,7 @@ function isStable(method_cell,method_name,dt_list)
     %Calculate the local error based on the formula
     % |(Analytical-Numerical)/Analytical|*100 
     % and take the maximum
-    m_err = @(method_cell,i) abs(max((-method_cell{1,i}+analytical_sol(0:dt_list(i):5).')./analytical_sol(0:dt_list(i):5).'))*100;
+    m_err = @(method_cell,i) max(abs((-method_cell{1,i}+analytical_sol(0:dt_list(i):5).')./analytical_sol(0:dt_list(i):5).'))*100;
     
     for i=1:length(dt_list)
         max_err(i) = m_err(method_cell,i);
