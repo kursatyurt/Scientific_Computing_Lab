@@ -11,7 +11,12 @@ ny = nx;
 % c)
 % see GS_solver
 
+% d)
+rhs_fct = @(x,y) -2*pi^2*sin(pi*x)*sin(pi*y);
+rhs = getFctVector(rhs_fct,nx,ny);
+
 % d.1)
+A = getLaplacianMatrix(nx,ny);
 mat_sol = A\rhs;
 mat_sol = reshape(mat_sol,nx,ny)
 
@@ -22,8 +27,7 @@ mat_sol = A_sparse\rhs;
 % d.3)
 gauss = GS_solver(rhs,nx,ny)
 
-rhs_fct = @(x,y) -2*pi^2*sin(pi*x)*sin(pi*y);
-rhs = getFctVector(rhs_fct,nx,ny);
+
 
 
 
