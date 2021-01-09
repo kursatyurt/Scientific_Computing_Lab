@@ -8,8 +8,9 @@ beta2=(dx/dy)^2;
 %Start with an infinitiy norm
 norm=inf;
 
+% accuracy = 1e-4;
+% while(norm>accuracy)
 for k=1:1000 %this loop should be changed to while norm > 1e-4
-
 %Start solution Loop
 add=0;
 for j=1:ny
@@ -55,6 +56,14 @@ function [left,right,up,down] = stencilcheck(i,j,nx,ny,T)
     
 end
 
+function xij = boundCheck(x,m,sz)
+% implements 0 Dirichlet BC
+    if(m<1 || m>sz)
+        xij = 0;
+    else
+        xij = x(m);
+    end
+end
 
 function norm = calculate_norm(T,nx,ny,rhs)
 dx=1/(nx+1);
@@ -65,25 +74,16 @@ x=reshape(T.',1,nx*ny);
 norm=0;sum1=0;sum2=0;
 
 %Start Calculation
-for m=1:nx*ny
-    for n=1:nx*ny
-        a = 0;
-        %Get the the a(i,j) value
-        if m == n 
-            a = -2/dx^2 -2/dy^2;
-        elseif m-1 == n || m+1 == n
-            a = 1/dy^2;
-        elseif m-nx == n || m+nx == n
-            a = 1/dy^2;
-        end
-        %Inner Sum
-        sum1 = sum1 + a*x(n);
-    end
-    %Outer Sum
+n = nx*ny;
+for m=1:n
+    sum1 = (-2/dx^2 -2/dy^2)*x(m) + 1/dx^2*(boundCheck(x,m-1,n)+boundCheck(x,m+1,n)) +1/dy^2*(boundCheck(x,m-nx,n) + boundCheck(x,m+nx,n));
     sum2 = sum2 + (rhs(m) - sum1)^2;
 end
 %Calculate Norm
 norm = sqrt(1/(nx*ny)*sum2);
 end
+
+
+
 
 
