@@ -16,7 +16,7 @@ for j=1:ny
     end
     add = add + nx;
 end
-norm = calculate_norm(T,nx,ny,rhs)
+norm = calculate_norm(T,nx,ny,rhs);
 
 end
 end
