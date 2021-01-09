@@ -12,9 +12,12 @@ hy2 = 1/(ny+1)^2;
 A = getLaplacianMatrix(nx,ny);
 rhs_fct = @(x,y) -2*pi^2*sin(pi*x)*sin(pi*y);
 rhs = getFctVector(rhs_fct,nx,ny);
-num = linsolve(A,rhs)
+num = linsolve(A,rhs);
+num = reshape(num,nx,ny)
+gauss = GS_solver(rhs,nx,ny)
 ana_fct = @(x,y) sin(pi*x)*sin(pi*y);
-ana = getFctVector(ana_fct,nx,ny)
+ana = getFctVector(ana_fct,nx,ny);
+ana = reshape(ana,nx,ny)
 
-T = GS_solver(rhs,nx,ny)
+
 
