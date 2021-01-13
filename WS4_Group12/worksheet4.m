@@ -1,9 +1,5 @@
 clear all;
 clc;
-% resolution
-nx = 5;
-ny = nx;
-%%%%
 
 % b)
 % see getLaplacianMatrix
@@ -30,8 +26,7 @@ mat_sol = A_sparse\rhs;
 GS_solver(rhs,nx,ny);
 
 % e)
-%Nx_list=[3 7 15 31 63 127];
-Nx_list=[3 7 15 31];
+Nx_list=[7 15 31 63];
 [sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,rhs_fct); 
 make_plots(Nx_list,sol_gauss);
 
