@@ -29,12 +29,6 @@ mat_sol = A_sparse\rhs;
 % d.3)
 GS_solver(rhs,nx,ny);
 
-%{
-ana_fct = @(x,y) sin(pi*x)*sin(pi*y);
-ana = getFctVector(ana_fct,nx,ny);
-ana = reshape(ana,nx,ny)
-%}
-
 % e)
 %Nx_list=[3 7 15 31 63 127];
 Nx_list=[3 7 15 31];
