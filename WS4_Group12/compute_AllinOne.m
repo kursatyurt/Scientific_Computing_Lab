@@ -30,7 +30,7 @@ for i=1:length(Nx_list)
    % Measure storage
    %sol_gauss{i}{3} = ;  
    % Need to confirm error cal, compare to which sol?.
-   sol_gauss{i}{4} = sqrt(1/(nx*ny)*sum(sum(sol_gauss{i}{1}-sol_direct{i}{1}).^2));
+   sol_gauss{i}{4} = sqrt(1/(nx*ny)*sum(sum(sol_gauss{i}{1}-getAnalyticalSolution(nx,ny)).^2));
 
 
 
