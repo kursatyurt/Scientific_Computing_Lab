@@ -9,12 +9,12 @@ clc;
 
 % d)
 rhs_fct = @(x,y) -2*pi^2*sin(pi*x)*sin(pi*y);
-rhs = getFctVector(rhs_fct,nx,ny);
+%rhs = getFctVector(rhs_fct,nx,ny);
 
 % d.1)
-A = getLaplacianMatrix(nx,ny);
-mat_sol = A\rhs;
-mat_sol = reshape(mat_sol,nx,ny);
+%A = getLaplacianMatrix(nx,ny);
+%mat_sol = A\rhs;
+%mat_sol = reshape(mat_sol,nx,ny);
 
 % d.2)
 %{
@@ -23,7 +23,7 @@ mat_sol = A_sparse\rhs;
 %}
 
 % d.3)
-GS_solver(rhs,nx,ny);
+%GS_solver(rhs,nx,ny);
 
 % e)
 Nx_list=[7 15 31 63];
