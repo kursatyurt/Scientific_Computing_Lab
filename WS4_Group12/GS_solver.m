@@ -12,15 +12,70 @@ accuracy = 1e-4;
 while(norm>accuracy)
 %Start solution Loop
 add=0;
-for j=1:ny
-    for i=1:nx
-        %Check for the boundaries 
-        [left,right,up,down] = stencilcheck(i,j,nx,ny,T);
-        %Apply Gauss-Seidel Formulation 
-        T(i,j)=  (right + left +beta2*(up+down)-dx^2*rhs(i+add))/(2*(1+beta2));
+
+%% Calculate Left-Up Corner Value
+j=1;
+i=1;
+T(i,j)=  (T(i+1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+
+%% Calculate Left-Most Border Values
+for i=2:nx-1
+    T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+end
+
+%% Calculate Left-Down Corner Value 
+i=nx;
+T(i,j)=  (T(i-1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+add = add + nx;
+
+%%Calculate Inner Points
+
+for j=2:ny-1
+    %% Upper Most Point
+    i=1;
+    T(i,j)=  (T(i+1,j)+beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+    %% Inner Points
+    for i=2:nx-1
+        T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
     end
+    %% Down Most Point
+    i=nx;
+    T(i,j)=  (T(i-1,j) +beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
     add = add + nx;
 end
+
+% Calculate Right-Upper Corner Value 
+j=ny;
+i=1;
+T(i,j)=  (T(i+1,j)+beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
+
+% Calculate Right-Most Border Value 
+for i=2:nx-1
+    T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
+end
+
+%% Calculate Right-Down Corner Value 
+i=nx;
+T(i,j)=  (T(i-1,j) +beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
+
+%%
+
+%%% MORE COMPACT BUT LESS EFFICENT CODE %%%
+
+% for j=1:ny
+%     for i=1:nx
+%         %Check for the boundaries 
+%         [left,right,up,down] = stencilcheck(i,j,nx,ny,T);
+%         %Apply Gauss-Seidel Formulation 
+%         T(i,j)=  (right + left +beta2*(up+down)-dx^2*rhs(i+add))/(2*(1+beta2));
+%     end
+%     add = add + nx;
+% end
+
+%%% THIS CODE PIECE IS ABOUT %20-25 PERCENT SLOWER THAN ABOVE VERSION %%%
+
+
+%%
 %Calculate norm for current solution 
 norm = calculate_norm(T,nx,ny,rhs);
 
