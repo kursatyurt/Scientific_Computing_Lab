@@ -30,7 +30,7 @@ mat_sol = A_sparse\rhs;
 %GS_solver(rhs,nx,ny);
 
 % d)
-Nx_list=[3 7 15 31 63];
+Nx_list=[3 7 15 31 63,127];
 Ny_list=Nx_list;
 [sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,Ny_list,rhs_fct); 
 % e)
