@@ -18,7 +18,7 @@ for i=1:length(Nx_list)
    sol_direct{i}{2} = toc;%etime(clock,t2);
    sol_direct{i}{1} = reshape(mat_sol,nx,ny);
    % Measure storage
-   sol_direct{i}{3} = nx*ny + size(mat_sol,1); 
+   sol_direct{i}{3} = size(A,1)*size(A,2) + size(mat_sol,1); 
    
    % no error cal require
    
