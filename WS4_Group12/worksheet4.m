@@ -30,11 +30,11 @@ mat_sol = A_sparse\rhs;
 Nx_list=[7 15 31 63];
 Ny_list=Nx_list;
 [sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,Ny_list,rhs_fct); 
+createComparisonTable(sol_gauss,Nx_list,"Gauss");
 make_plots(Nx_list,Ny_list,sol_gauss);
-
 % f)
 % Need to fulfill storage cal in compute_AllinOne 
 
 % g)
-createTable(sol_gauss, Nx_list(2:length(Nx_list)));
+createTable(sol_gauss, Nx_list(2:length(Nx_list)),'RowNames',{'1','2,','3','4'});
 
