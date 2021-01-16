@@ -1,4 +1,5 @@
 clear all;
+close all;
 clc;
 
 % b)
@@ -27,8 +28,9 @@ mat_sol = A_sparse\rhs;
 
 % e)
 Nx_list=[7 15 31 63];
-[sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,rhs_fct); 
-make_plots(Nx_list,sol_gauss);
+Ny_list=Nx_list;
+[sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,Ny_list,rhs_fct); 
+make_plots(Nx_list,Ny_list,sol_gauss);
 
 % f)
 % Need to fulfill storage cal in compute_AllinOne 

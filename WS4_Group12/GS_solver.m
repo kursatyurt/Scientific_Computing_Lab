@@ -5,7 +5,7 @@ T=zeros(nx,ny);
 dx=1/(nx+1);
 dy=1/(ny+1);
 beta2=(dx/dy)^2;
-%Start with an infinitiy norm
+%Start with an infinity norm
 norm=inf;
 
 accuracy = 1e-4;
@@ -53,15 +53,6 @@ function [left,right,up,down] = stencilcheck(i,j,nx,ny,T)
         down = 0;
     end
     
-end
-
-function xij = boundCheck(x,m,sz)
-% implements 0 Dirichlet BC
-    if(m<1 || m>sz)
-        xij = 0;
-    else
-        xij = x(m);
-    end
 end
 
 function norm = calculate_norm(T,nx,ny,rhs)
