@@ -16,11 +16,6 @@ Tyy =  diag(-2/hy2*ones(n,1)) + diag(ones(n-nx,1)/hy2,-nx) + diag(ones(n-nx,1)/h
 A = Txx + Tyy;
 
 % Adjust for Dirichlet BC
-for i=nx+1:nx:nx*ny
-    A(i,i-1) = 0;
-end
-
-for i=nx:nx:nx*ny-1
-    A(i,i+1) = 0;
-end
+A(nx+1:nx:n,nx:nx:n-1)=0;
+A(nx:nx:n-1,nx+1:nx:n)=0;
 
