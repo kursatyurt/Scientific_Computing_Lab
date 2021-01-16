@@ -40,7 +40,10 @@ Ny_list=Nx_list;
 
 [sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,Ny_list,rhs_fct); 
 %% e) Visualize SOLUTIONS 
-make_plots(Nx_list,Ny_list,sol_direct);
+make_plots(Nx_list,Ny_list,sol_direct,"Full Matrix");
+make_plots(Nx_list,Ny_list,sol_gauss,"Gauss Seidel");
+make_plots(Nx_list,Ny_list,sol_sparse,"Sparse Matrix");
+
 %% f) Compare Store Reqirements and Runtime
 createComparisonTable(sol_direct,Nx_list,"Direct");
 createComparisonTable(sol_sparse,Nx_list,"Sparse");
