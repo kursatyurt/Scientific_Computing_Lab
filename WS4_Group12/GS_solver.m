@@ -12,15 +12,47 @@ accuracy = 1e-4;
 while(norm>accuracy)
 %Start solution Loop
 add=0;
-for j=1:ny
-    for i=1:nx
-        %Check for the boundaries 
-        [left,right,up,down] = stencilcheck(i,j,nx,ny,T);
-        %Apply Gauss-Seidel Formulation 
-        T(i,j)=  (right + left +beta2*(up+down)-dx^2*rhs(i+add))/(2*(1+beta2));
+j=1;
+i=1;
+T(i,j)=  (T(i+1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+for i=2:nx-1
+    T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+end
+i=nx;
+T(i,j)=  (T(i-1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+add = add + nx;
+
+for j=2:ny-1
+     i=1;
+    T(i,j)=  (T(i+1,j)+beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
+    for i=2:nx-1
+        T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
     end
+    i=nx;
+    T(i,j)=  (T(i-1,j) +beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
     add = add + nx;
 end
+
+
+j=ny;
+i=1;
+T(i,j)=  (T(i+1,j)+beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
+for i=2:nx-1
+    T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
+end
+i=nx;
+T(i,j)=  (T(i-1,j) +beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
+
+
+% for j=1:ny
+%     for i=1:nx
+%         %Check for the boundaries 
+%         [left,right,up,down] = stencilcheck(i,j,nx,ny,T);
+%         %Apply Gauss-Seidel Formulation 
+%         T(i,j)=  (right + left +beta2*(up+down)-dx^2*rhs(i+add))/(2*(1+beta2));
+%     end
+%     add = add + nx;
+% end
 %Calculate norm for current solution 
 norm = calculate_norm(T,nx,ny,rhs);
 
