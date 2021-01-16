@@ -21,7 +21,7 @@ for i=1:length(Nx_list)
    %Reshape Solution vector as matrix
    sol_direct{i}{1} = reshape(mat_sol,nx,ny); 
    % Measure storage
-   sol_direct{i}{3} = size(A,1)*size(A,2) + size(mat_sol,1); 
+   sol_direct{i}{3} = prod(size(A)) + prod(size(mat_sol)) + prod(size(rhs)); 
    
    %% Solution using Sparse matrix
    
@@ -35,7 +35,7 @@ for i=1:length(Nx_list)
    %Reshape Solution vector as matrix
    sol_sparse{i}{1} = reshape(spar_sol,nx,ny);
    % Measure storage
-   sol_sparse{i}{3} = nnz(Asp) + size(spar_sol,1); 
+   sol_sparse{i}{3} = nnz(Asp) + prod(size(spar_sol))+ prod(size(rhs)); 
    
    %% Solution using Gauss Seidel Solver
    
@@ -43,7 +43,7 @@ for i=1:length(Nx_list)
    sol_gauss{i}{1}= GS_solver(rhs,nx,ny);
    sol_gauss{i}{2} = toc; %End Time Measurement for Calculation and Store it
    % Measure storage
-   sol_gauss{i}{3} = size(sol_gauss{i}{1},1);  
+   sol_gauss{i}{3} = prod(size(sol_gauss{i}{1})) +prod(size(rhs));  
    % Calculate the error with comparing analytical solution and store it
    sol_gauss{i}{4} = sqrt(1/(nx*ny)*sum(sum(sol_gauss{i}{1}-getAnalyticalSolution(nx,ny)).^2));
 
