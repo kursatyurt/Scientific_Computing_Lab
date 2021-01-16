@@ -21,16 +21,15 @@ rhs_fct = @(x,y) -2*pi^2*sin(pi*x)*sin(pi*y);
 %mat_sol = reshape(mat_sol,nx,ny);
 
 % d.2)
-%{
-A_sparse = sparse(A); % TODO build from scratch?
-mat_sol = A_sparse\rhs;
-%}
+%Asp = get_A_sparse; 
+%mat_sol = A_sparse\rhs;
+
 
 % d.3)
 %GS_solver(rhs,nx,ny);
 
 % d)
-Nx_list=[3 7 15 31 63,127];
+Nx_list=[3 7 15 31 63 127];
 Ny_list=Nx_list;
 [sol_gauss, sol_direct, sol_sparse] = compute_AllinOne(Nx_list,Ny_list,rhs_fct); 
 % e)
