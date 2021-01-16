@@ -18,7 +18,7 @@ for i=1:length(Nx_list)
    sol_direct{i}{2} = toc;%etime(clock,t2);
    sol_direct{i}{1} = reshape(mat_sol,nx,ny);
    % Measure storage
-   sol_direct{i}{3} = nx*ny + size(mat_sol,1); 
+   sol_direct{i}{3} = size(A,1)*size(A,2) + size(mat_sol,1); 
    
    % no error cal require
    
@@ -37,7 +37,7 @@ for i=1:length(Nx_list)
    sol_gauss{i}{1}= GS_solver(rhs,nx,ny);
    sol_gauss{i}{2} = toc;%etime(clock,t1);
    % Measure storage
-   %sol_gauss{i}{3} = ;  
+   sol_gauss{i}{3} = size(sol_gauss{i}{1},1);  
    % Need to confirm error cal, compare to which sol?.
    sol_gauss{i}{4} = sqrt(1/(nx*ny)*sum(sum(sol_gauss{i}{1}-getAnalyticalSolution(nx,ny)).^2));
 
