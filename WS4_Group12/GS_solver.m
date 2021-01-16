@@ -1,3 +1,4 @@
+%% Gauss Siedel Iterative Solver Module
 function T = GS_solver(rhs,nx,ny)
 %Start with zero initial values 
 T=zeros(nx,ny);
@@ -28,7 +29,7 @@ i=nx;
 T(i,j)=  (T(i-1,j) +beta2*(T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
 add = add + nx;
 
-%%Calculate Inner Points
+%% Calculate Inner Points
 
 for j=2:ny-1
     %% Upper Most Point
@@ -43,13 +44,12 @@ for j=2:ny-1
     T(i,j)=  (T(i-1,j) +beta2*(T(i,j-1)+T(i,j+1))-dx^2*rhs(i+add))/(2*(1+beta2));
     add = add + nx;
 end
-
-% Calculate Right-Upper Corner Value 
+%% Calculate Right-Upper Corner Value 
 j=ny;
 i=1;
 T(i,j)=  (T(i+1,j)+beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
 
-% Calculate Right-Most Border Value 
+%% Calculate Right-Most Border Value 
 for i=2:nx-1
     T(i,j)=  (T(i+1,j) + T(i-1,j) +beta2*(T(i,j-1))-dx^2*rhs(i+add))/(2*(1+beta2));
 end
@@ -81,7 +81,7 @@ norm = calculate_norm(T,nx,ny,rhs);
 
 end
 end
-
+%% A function that check stencil point are available or not
 function [left,right,up,down] = stencilcheck(i,j,nx,ny,T)
     %Check if on the left boundary.
     if i>1 
@@ -109,7 +109,7 @@ function [left,right,up,down] = stencilcheck(i,j,nx,ny,T)
     end
     
 end
-
+%% Function to calculate residual norm
 function norm = calculate_norm(T,nx,ny,rhs)
 dx=1/(nx+1);
 dy=1/(ny+1);
