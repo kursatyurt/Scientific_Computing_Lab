@@ -1,4 +1,4 @@
-function make_plots(Nx_list,Ny_list, Data)
+function make_plots(Nx_list,Ny_list, Data,methodname)
 % require list of Nx, and data computed from GS_solver
 
 for i=1:length(Nx_list)
@@ -15,11 +15,11 @@ for i=1:length(Nx_list)
     figure;
     subplot(1,2,1);
     surf(dimx,dimy, sol_w_bounds, 'FaceAlpha',0.95); colorbar; hcb=colorbar; hcb.Title.String = "Temperature";axis square;
-    title('Surface Plot'); xlabel('X');ylabel('Y');zlabel('Surface Temperature');
+    title('Surface Plot of '+methodname+" on "+num2str(nx)+" by "+num2str(ny)+" grid."); xlabel('X');ylabel('Y');zlabel('Surface Temperature');
     
     subplot(1,2,2);
     contour(dimx,dimy,sol_w_bounds,20,'--'); colorbar; hcb=colorbar; hcb.Title.String = "Temperature";axis square;
-    title('Contour Plot'); xlabel('X');ylabel('Y');
+    title('Contour Plot of '+methodname+" on "+num2str(nx)+" by "+num2str(ny)+" grid."); xlabel('X');ylabel('Y');
 
 end
 
