@@ -45,7 +45,7 @@ for i=1:length(Nx_list)
    % Measure storage
    sol_gauss{i}{3} = prod(size(sol_gauss{i}{1})) +prod(size(rhs));  
    % Calculate the error with comparing analytical solution and store it
-   sol_gauss{i}{4} = sqrt(1/(nx*ny)*sum(sum(sol_gauss{i}{1}-getAnalyticalSolution(nx,ny)).^2));
+   sol_gauss{i}{4} = sqrt(1/(nx*ny)*sum(sum((sol_gauss{i}{1}-getAnalyticalSolution(nx,ny)).^2)));
 
 end
 
