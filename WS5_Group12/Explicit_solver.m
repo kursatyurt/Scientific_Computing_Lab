@@ -2,8 +2,8 @@ function Tnp1 = Explicit_solver(Tn,nx,ny,dt)
 
 %Calculate lambdax, lambday and lambdax+lambday+1 values (i.e coefficients)_
 
-lambdax = dt/(nx+1)^2;
-lambday = dt/(ny+1)^2;
+lambdax = dt*(nx+1)^2;
+lambday = dt*(ny+1)^2;
 lxly1  = -2*lambdax-2*lambday+1;
 
 %Take old solution as new one 
