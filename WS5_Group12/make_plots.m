@@ -11,6 +11,7 @@ for i=1:length(Nx_list)
 nx = Nx_list(i);
 ny = Ny_list(i);
 
+
 %Calcualte x,y values of mesh points for plotting
 [dimx,dimy] = meshgrid(linspace(0,1,ny+2),linspace(0,1,nx+2));
 
