@@ -2,13 +2,13 @@
 function Tnp1 = GS_solver(Tn,nx,ny,dt)
 
 %Calculate lambdax, lambday and beta values (i.e coefficients)_
-lambdax = dt/(nx+1)^2;
-lambday = dt/(ny+1)^2;
-beta = 1/(lambdax+lambday+1);
+lambdax = dt/((nx+1)^2);
+lambday = dt/((ny+1)^2);
+beta = 1/(2*lambdax+2*lambday+1);
 
 %Start with an infinity norm
 norm=inf;
-Tnp1=zeros(nx+2,ny+2);
+Tnp1=Tn;
 % Required accuracy 1e-6 take square of it 
 accuracy2 = 1e-12;
 
@@ -29,7 +29,7 @@ end
 
 %% Function to calculate residual norm
 function norm = calculate_norm(Tnp1,nx,ny,lambdax,lambday,beta,Tn)
-norm_m=zeros(nx*ny);d
+norm_m=zeros(nx*ny);
 
  for j=2:ny+1
      for i=2:nx+1
