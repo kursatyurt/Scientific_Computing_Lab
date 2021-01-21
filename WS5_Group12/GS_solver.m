@@ -36,7 +36,7 @@ norm_m=zeros(nx*ny);
          norm_m(i,j)= beta*Tn(i,j)-lambdax*(Tnp1(i-1,j)+Tnp1(i+1,j))-lambday*(Tnp1(i,j-1)+Tnp1(i,j+1))-Tn(i,j);
      end
  end 
-norm=sum(norm_m,'all');
+norm=sum(norm_m(2:nx+1,2:ny+1).^2,'all');
 end
 
 
