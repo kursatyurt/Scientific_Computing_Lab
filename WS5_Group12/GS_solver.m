@@ -2,8 +2,8 @@
 function Tnp1 = GS_solver(Tn,nx,ny,dt)
 
 %Calculate lambdax, lambday and beta values (i.e coefficients)_
-lambdax = dt/((nx+1)^2);
-lambday = dt/((ny+1)^2);
+lambdax = dt*(nx+1)^2;
+lambday = dt*(ny+1)^2;
 beta = 1/(2*lambdax+2*lambday+1);
 
 %Start with an infinity norm
@@ -36,7 +36,7 @@ norm_m=zeros(nx*ny);
          norm_m(i,j)= beta*Tn(i,j)-lambdax*(Tnp1(i-1,j)+Tnp1(i+1,j))-lambday*(Tnp1(i,j-1)+Tnp1(i,j+1))-Tn(i,j);
      end
  end 
-norm=sum(norm_m(2:nx+1,2:ny+1).^2,'all');
+norm=sum(norm_m(2:nx+1,2:ny+1),'all')
 end
 
 
