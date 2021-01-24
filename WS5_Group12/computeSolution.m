@@ -13,12 +13,14 @@ for i=1:length(Nx_list)
    %% store solutions at output times
    % Initialize Solution
    Tn = blkdiag(0,ones(nx,ny),0);
-   for k=1:length(output_times)
-       nbr_steps = int64(1/8/dt);
+   
+   for k=2:length(output_times)
+       otp_interval = diff(output_times(k-1:k));
+       nbr_steps = int64(otp_interval/dt);
        for s=1:nbr_steps
            Tn = method(Tn,nx,ny,dt);
        end
-       sol{i}{j}{k}= Tn;
+       sol{i}{j}{k-1}= Tn;
    end
    end
 
