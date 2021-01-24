@@ -11,7 +11,7 @@ output_times = (0:4)/8;
 sol_explicit=computeSolution(Nx_list,Ny_list,dt_list,output_times,@Explicit_solver);
 sol_gauss=computeSolution(Nx_list,Ny_list,dt_list,output_times,@GS_solver);
 save_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit Euler")
-save_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)")
-% make_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit Euler")
-% make_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)")
+save_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)") % Task doesn't ask to export Gauss Seidel
+make_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit Euler")
+make_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)")
 

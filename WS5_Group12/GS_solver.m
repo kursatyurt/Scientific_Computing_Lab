@@ -16,7 +16,7 @@ while(norm>accuracy2)
 %Apply Gauss-Seidel Formulation 
  for j=2:ny+1
      for i=2:nx+1
-         Tnp1(i,j)= (Tn(i,j)+lambdax*(Tnp1(i-1,j)+Tn(i+1,j))+lambday*(Tnp1(i,j-1)+Tn(i,j+1)))*beta;
+         Tnp1(i,j)= (Tnp1(i,j)+lambdax*(Tnp1(i-1,j)+Tnp1(i+1,j))+lambday*(Tnp1(i,j-1)+Tnp1(i,j+1)))*beta;
      end
  end
 
