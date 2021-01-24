@@ -16,7 +16,9 @@ ny = Ny_list(i);
     nexttile()
     surf(dimx,dimy,Data{i}{j}{k},'FaceColor','interp');colormap('jet');
     caxis manual
-    c=colorbar; c.Label.String = 'Temperature'; %c.Limits=[0 .15];
+    caxis([0 0.2]);
+    zlim([0 .2]);
+    c=colorbar; c.Label.String = 'Temperature'; c.Limits=[0 .2];
     title(sprintf("Nx = %i, dt = 1/%s",Nx_list(i),dt_str(j)));
     end
 end
