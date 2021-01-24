@@ -15,7 +15,10 @@ ny = Ny_list(i);
     for j=1:length(dt_list)
     f = figure('visible', 'off');
     surf(dimx,dimy,Data{i}{j}{k},'FaceColor','interp');colormap('jet');
-    c=colorbar; c.Label.String = 'Temperature'; %c.Limits=[0 .15];
+    caxis manual
+    caxis([0 0.2]);
+    zlim([0 .2]);
+    c=colorbar; c.Label.String = 'Temperature'; c.Limits=[0 .2];
     title(methodname+" Solutions at time = "+time(k)+sprintf(" Nx = %i, dt = 1/%s",Nx_list(i),dt_str(j)));
     filename = "./figures/"+methodname+"_time_"+num2str(k)+"_8"+"_nx_"+num2str(Nx_list(i))+"_dt_1_"+dt_str(j)+".png";
     saveas(gcf,filename)
