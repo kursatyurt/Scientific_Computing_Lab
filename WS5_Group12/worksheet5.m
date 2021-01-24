@@ -12,6 +12,6 @@ sol_explicit=computeSolution(Nx_list,Ny_list,dt_list,output_times,@Explicit_solv
 sol_gauss=computeSolution(Nx_list,Ny_list,dt_list,output_times,@GS_solver);
 save_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit Euler")
 save_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)")
-make_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit Euler")
-make_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)")
+% make_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit Euler")
+% make_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Gauss Seidel (Implicit Euler)")
 
