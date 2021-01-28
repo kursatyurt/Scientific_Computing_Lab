@@ -14,7 +14,7 @@ ny = Ny_list(i);
 [dimx,dimy] = meshgrid(linspace(0,1,ny+2),linspace(0,1,nx+2));
     for j=1:length(dt_list)
     f = figure('visible', 'off');
-    surf(dimx,dimy,Data{i}{j}{k},'FaceColor','interp');colormap('jet');
+    surf(dimx,dimy,blkdiag(0,Data{i}{j}{k},0),'FaceColor','interp');colormap('jet');
     caxis manual
     caxis([0 0.2]);
     zlim([0 .2]);
