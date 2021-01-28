@@ -6,6 +6,9 @@ lambdax = dt*(nx+1)^2;
 lambday = dt*(ny+1)^2;
 lxly1  = -2*lambdax-2*lambday+1;
 
+
+%Include Boundaries 
+Tn = blkdiag(0,Tn,0);
 %Take old solution as new one 
 Tnp1=Tn;
 
@@ -17,6 +20,7 @@ Tnp1=Tn;
      end
  end
 
-
+%Exclude Bondaries
+Tnp1 = Tnp1(2:nx+1,2:ny+1);
 
 
