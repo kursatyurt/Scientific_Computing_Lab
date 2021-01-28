@@ -12,7 +12,7 @@ for i=1:length(Nx_list)
    dt = dt_list(j);
    %% store solutions at output times
    % Initialize Solution
-   Tn = blkdiag(0,ones(nx,ny),0);
+   Tn = ones(nx,ny);
    
    for k=2:length(output_times)
        otp_interval = diff(output_times(k-1:k));
