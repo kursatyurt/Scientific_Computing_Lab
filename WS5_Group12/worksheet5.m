@@ -12,6 +12,7 @@ sol_explicit=computeSolution(Nx_list,Ny_list,dt_list,output_times,@Explicit_solv
 sol_gauss=computeSolution(Nx_list,Ny_list,1/64,output_times,@Implicit_solver);
 save_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit")
 save_plots(Nx_list,Ny_list,1/64,sol_gauss,"Implicit") 
-%make_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit")
-%make_plots(Nx_list,Ny_list,dt_list,sol_gauss,"Implicit")
+
+show_plots(Nx_list,Ny_list,dt_list,sol_explicit,"Explicit")
+show_plots(Nx_list,Ny_list,1/64,sol_gauss,"Implicit")
 
