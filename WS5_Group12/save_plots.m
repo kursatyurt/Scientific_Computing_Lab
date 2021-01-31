@@ -5,6 +5,10 @@ figdir = "figures";
 if not(isfolder(figdir))
     mkdir(figdir)
 end
+
+% Draw and Save figures
+
+
 for k=1:4 % Loop for time stations (1:4)/8 
 for i=1:length(Nx_list)
 %Get Mesh Size
@@ -21,10 +25,10 @@ ny = Ny_list(i);
     c=colorbar; c.Label.String = 'Temperature'; c.Limits=[0 .2];
     title(methodname+" Solutions at time = "+time(k)+sprintf(" Nx = %i, dt = 1/%s",Nx_list(i),dt_str(j)));
     filename = "./figures/"+methodname+"_time_"+num2str(k)+"_8"+"_nx_"+num2str(Nx_list(i))+"_dt_1_"+dt_str(j)+".png";
-    saveas(gcf,filename)
+    %saveas(gcf,filename)
+    exportgraphics(gcf,filename,'Resolution',300)
     close all;
     end
 end
 end
-
 end
